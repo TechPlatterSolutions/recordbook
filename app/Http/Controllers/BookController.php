@@ -27,4 +27,16 @@ class BookController extends Controller
             'book' => $book
         ], 201); // Return a 201 status code for successful creation
     }
+
+   public function userBooks(Request $request)
+{
+    $user = $request->user(); // get the authenticated user
+
+    $books = $user->books()->latest()->get(); // fetch books related to user
+
+    return response()->json([
+        'status' => 'success',
+        'books' => $books,
+    ]);
+}
 }

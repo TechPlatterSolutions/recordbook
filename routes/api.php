@@ -28,5 +28,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::post('/books', [BookController::class, 'store']);
+    Route::get('/booklist', [BookController::class, 'userBooks']);
 });
 
